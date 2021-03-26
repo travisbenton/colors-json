@@ -2,13 +2,15 @@ const fs = require('fs')
 const COLORS = require('./colors.json')
 
 const disclaimer = `
-// ============================================
-// WARNING: This file has been auto-generated
-// ============================================\r\r\r
+// =================================================================================================
+//
+//       WARNING: This file has been auto-generated. Update colors in color.json file instead
+//
+// =================================================================================================\r\r\r
 `
 const template = (fn, join) => Object.keys(COLORS).map(fn).join(join || '')
 const lessTemplate = `${disclaimer}${template(color => `@${color}: #${COLORS[color]};\n`)}`
-const jsTemplate = `${disclaimer}${template(color => `const ${color}= '#${COLORS[color]}'`, '\n')}\n\nexport default {\n  ${template(color => `${color}`, ',\n\t')}\n}`
+const jsTemplate = `${disclaimer}${template(color => `const ${color} = '#${COLORS[color]}'`, '\n')}\n\nexport default {\n  ${template(color => `${color}`, ',\n\t')}\n}`
 
 // regex to weed out any non-hex color values in colors.json file
 const badColors = Object.keys(COLORS).filter(key => !COLORS[key].match(/^[0-9a-f]{3,6}$/i))
