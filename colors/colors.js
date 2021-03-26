@@ -1,10 +1,13 @@
 
+
 // ============================================
 // WARNING: This file has been auto-generated
 // ============================================
-const WHITE= '#ffffff'const BLACK= '#000000'
+const WHITE= '#ffffff'
+const BLACK= '#000000'
 
 export default {
-	WHITE,	BLACK
+	WHITE,
+	BLACK
 }
 	
